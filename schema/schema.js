@@ -6,11 +6,9 @@ const {
   GraphQLInt
 } = graphpl
 
-const users = [{
-  id: 23, firstName: 'Bill', age: 41
-}, {
-  id: 50, firstName: 'Sam', age: 19
-}]
+const users = [
+  { id: 23, firstName: 'Bill', age: 41 },
+  { id: 50, firstName: 'Sam', age: 19 }]
 
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -21,7 +19,7 @@ const UserType = new GraphQLObjectType({
   }
 })
 
-Const RootQuery = new graphpl.GraphQLInputObjectType({
+const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     user: {
