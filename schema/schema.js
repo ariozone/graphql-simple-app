@@ -27,9 +27,12 @@ const UserType = new GraphQLObjectType({
     company: {
       type: CompanyType,
       resolve(parentValue, args) {
-        return axios.get(`http://localhost: 3000/companies/${parentValue.companyId}`)
+        return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
           .then(res => res.data)
       }
+
+
+
     }
   }
 })
@@ -48,8 +51,21 @@ const RootQuery = new GraphQLObjectType({
           .then(respond => respond.data)
       }
 
+    },
+    company: {
+      type: CompanyType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:3000/companies/${args.id}`)
+          .then(respond => respond.data)
+      }
+
     }
   }
+
+
 
 
 })
